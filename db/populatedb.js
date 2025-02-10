@@ -5,6 +5,7 @@ const SQL = `
 CREATE TABLE IF NOT EXISTS product_quantity (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   product_name VARCHAR (75) NOT NULL,
+  category VARCHAR (75) NOT NULL,
   qty INTEGER NOT NULL,
   CONSTRAINT qty_not_negative CHECK (qty >= 0)
   );
