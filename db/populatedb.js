@@ -2,12 +2,16 @@ const { Client } = require("pg");
 const { argv } = require("node:process");
 
 const SQL = `
-CREATE TABLE IF NOT EXISTS product_quantity (
+CREATE TABLE IF NOT EXISTS categories (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  product_name VARCHAR (75) NOT NULL,
-  category VARCHAR (75) NOT NULL,
-  qty INTEGER NOT NULL,
-  CONSTRAINT qty_not_negative CHECK (qty >= 0)
+  name VARCHAR (75) NOT NULL
+);
+CREATE TABLE IF NOT EXISTS items (
+  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  category_id INTEGER NOT NULL REFERENCES categories(id),
+  name VARCHAR (75) NOT NULL,
+  quantity INTEGER NOT NULL,
+  CONSTRAINT quantity_not_negative CHECK (quantity >= 0)
   );
 `;
 
