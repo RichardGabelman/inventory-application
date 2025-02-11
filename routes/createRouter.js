@@ -12,6 +12,6 @@ createRouter.get("/category", getCreateCategoryForm);
 createRouter.get("/item/:categoryName/:categoryID", getCreateItemForm);
 
 createRouter.post("/category", postCreateCategoryForm);
-createRouter.post("/item/:categoryID", postCreateItemForm);
+createRouter.post("/item/:categoryName/:categoryID", postCreateItemForm);
 
 module.exports = createRouter;

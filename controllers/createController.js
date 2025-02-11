@@ -60,6 +60,8 @@ const validateItem = [
 exports.postCreateItemForm = [
   validateItem,
   async (req, res) => {
-    res.redirect("/");
+    const categoryID = req.params.categoryID;
+    const categoryName = req.params.categoryName;
+    res.redirect(`/category/${categoryName}/${categoryID}`);
   },
 ];

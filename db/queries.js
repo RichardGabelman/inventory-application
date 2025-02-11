@@ -16,11 +16,6 @@ async function addNewCategory(category_name) {
   await pool.query("INSERT INTO categories (name) VALUES ($1)", [category_name]);
 }
 
-async function getCategoryIdByName(category_name) {
-  const { row } = await pool.query(`SELECT id FROM categories WHERE name=$1`, [category_name]);
-  return row;
-}
-
 module.exports = {
   getAllCategories,
   getAllItems,
