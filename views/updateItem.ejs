@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <title>Update Item</title>
+  </head>
+<body>
+  <h1>Update Item</h1>
+  <form action="/update/item/<%= item.id %>" method="POST">
+    <input type="text" name="name" value="<%= item.name %>" required>
+    <input type="number" name="quantity" value="<%= item.quantity %>" min="0" required>
+    <button type="submit">Update Item</button>
+  </form>
+  <a href="/">Back to home</a>
+</body>
+</html>
