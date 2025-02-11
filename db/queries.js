@@ -6,13 +6,18 @@ async function getAllCategories() {
 }
 
 async function getAllItems(category_name) {
-  const { rows } = await pool.query(`SELECT name, quantity FROM items
+  const { rows } = await pool.query(`SELECT items.name, quantity FROM items
                                     INNER JOIN categories ON items.category_id=categories.id
                                     WHERE categories.name=$1`, [category_name]);
   return rows;
 }
 
+async function addNewCategory(category_name) {
+  await pool.query("INSERT INTO categories (name) VALUES ($1)", [category_name]);
+}
+
 module.exports = {
   getAllCategories,
-  getAllItems
+  getAllItems,
+  addNewCategory
 }
