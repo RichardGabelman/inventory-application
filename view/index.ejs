@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title>Homepage</title>
+  </head>
+  <body>
+    <h1>Inventory Application</h1>
+    <ul>
+      <% categories.forEach((category) => { %>
+        <li>
+          <a href="/<%= category.name %>">
+            <h2><%= category.name %></h2>
+          </a>
+        </li>
+      <% }); %>
+    </ul>
+  </body>
+</html>
