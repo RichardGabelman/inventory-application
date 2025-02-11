@@ -5,3 +5,7 @@ async function getAllCategories(req, res) {
   console.log("Categories: ", categories);
   res.render("index", { categories: categories });
 }
+
+module.exports = {
+  getAllCategories
+};
