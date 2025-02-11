@@ -9,7 +9,7 @@ const {
 const createRouter = Router();
 
 createRouter.get("/category", getCreateCategoryForm);
-createRouter.get("/item/:categoryID", getCreateItemForm);
+createRouter.get("/item/:categoryName/:categoryID", getCreateItemForm);
 
 createRouter.post("/category", postCreateCategoryForm);
 createRouter.post("/item/:categoryID", postCreateItemForm);

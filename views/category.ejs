@@ -4,12 +4,13 @@
   </head>
   <body>
     <h1>Inventory Application</h1>
-    <h2><%= categoryName %></h2>
+    <h2>Category: <%- categoryName %></h2>
     <ul>
       <% items.forEach((item) => { %>
       <li><%= include('item', { item: item }) %></li>
       <% }); %>
     </ul>
+    <a href="/create/item/<%= categoryName %>/<%= categoryID %>">Add item</a>
     <a href="/">Go back</a>
   </body>
 </html>

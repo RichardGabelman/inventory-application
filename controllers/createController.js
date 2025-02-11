@@ -6,12 +6,12 @@ exports.getCreateCategoryForm = (req, res) => {
 };
 
 exports.getCreateItemForm = async (req, res) => {
-  const category_id = req.params.categoryID;
-  const category_name = await db.getCategoryNameByID(category_id);
+  const categoryName = req.params.categoryName;
+  const categoryID = req.params.categoryID;
 
   res.render("createItem", {
-    categoryName: category_name,
-    categoryID: category_id,
+    categoryName: categoryName,
+    categoryID: categoryID,
   });
 }
 

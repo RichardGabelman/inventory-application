@@ -3,6 +3,6 @@ const { getAllItems } = require("../controllers/categoryController");
 
 const categoryRouter = Router();
 
-categoryRouter.get("/", getAllItems);
+categoryRouter.get("/:categoryName/:categoryID", getAllItems);
 
 module.exports = categoryRouter;
