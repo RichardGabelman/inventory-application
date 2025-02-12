@@ -4,6 +4,7 @@ const path = require("node:path");
 const indexRouter = require("./routes/indexRouter");
 const categoryRouter = require("./routes/categoryRouter");
 const createRouter = require("./routes/createRouter");
+const updateRouter = require("./routes/updateRouter");
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", indexRouter);
 app.use("/create", createRouter);
 app.use("/category", categoryRouter);
+app.use("/update", updateRouter);
 app.use((err, req, res, next) => {
   console.error(err);
   res.status(err.statusCode || 500).send(err.message);

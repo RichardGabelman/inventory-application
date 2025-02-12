@@ -4,7 +4,10 @@
   </head>
   <body>
     <h1>Inventory Application</h1>
-    <h2>Category: <%- categoryName %></h2>
+    <div>
+      <h2>Category: <%- categoryName %></h2>
+      <a href="/update/category/<%= categoryID %>">Update category name</a>
+    </div>
     <ul>
       <% items.forEach((item) => { %>
       <li>
