@@ -7,7 +7,9 @@
     <h2>Category: <%- categoryName %></h2>
     <ul>
       <% items.forEach((item) => { %>
-      <li><%= include('item', { item: item }) %></li>
+      <li>
+        <%- include('item', { item: item }) %>
+      </li>
       <% }); %>
     </ul>
     <a href="/create/item/<%= categoryName %>/<%= categoryID %>">Add item</a>
