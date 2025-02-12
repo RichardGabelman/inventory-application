@@ -45,8 +45,6 @@ exports.postCreateCategoryForm = [
 const validateItem = [
   body("name")
     .trim()
-    .isAlpha()
-    .withMessage("Name must contain letters of the alphabet")
     .isLength({ max: 255 })
     .withMessage("Name cannot exceed 255 characters"),
   body("quantity")
@@ -60,8 +58,22 @@ const validateItem = [
 exports.postCreateItemForm = [
   validateItem,
   async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).render("createItem", {
+        errors: errors.array(),
+        categoryName: req.params.categoryName,
+        categoryID: req.params.categoryID,
+      });
+    }
+
     const categoryID = req.params.categoryID;
     const categoryName = req.params.categoryName;
+
+    const productName = req.body.name;
+    const productQuantity = req.body.quantity;
+
+    await db.addNewItem(categoryID, { name: productName, quantity: productQuantity });
     res.redirect(`/category/${categoryName}/${categoryID}`);
   },
 ];

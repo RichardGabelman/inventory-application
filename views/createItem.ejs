@@ -6,16 +6,25 @@
     <header>
       <h1>New Item in <%= categoryName %></h1>
     </header>
-    <form method="POST" action="/create/item/<%= categoryName %>/<%= categoryID %>">
+    <form
+      method="POST"
+      action="/create/item/<%= categoryName %>/<%= categoryID %>"
+    >
       <label for="name">
         Item Name:
-        <input type="text" id="name" name="name" placeholder="Product Name" required>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Product Name"
+          required
+        />
       </label>
       <label for="quantity">
         Quantity:
-        <input type="number" id="quantity" name="quantity" min="0" value="0">
+        <input type="number" id="quantity" name="quantity" min="0" value="0" />
       </label>
-      <input type="submit" value="Submit">
-   </form>
+      <input type="submit" value="Submit" />
+    </form>
   </body>
 </html>

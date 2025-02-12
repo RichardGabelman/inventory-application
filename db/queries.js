@@ -16,8 +16,13 @@ async function addNewCategory(category_name) {
   await pool.query("INSERT INTO categories (name) VALUES ($1)", [category_name]);
 }
 
+async function addNewItem(category_ID, product) {
+  await pool.query("INSERT INTO items (name, category_id, quantity) VALUES ($1, $2, $3)", [product.name, category_ID, product.quantity]);
+}
+
 module.exports = {
   getAllCategories,
   getAllItems,
-  addNewCategory
+  addNewCategory,
+  addNewItem
 }
