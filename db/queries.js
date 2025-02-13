@@ -6,9 +6,7 @@ async function getAllCategories() {
 }
 
 async function getAllItems(category_ID) {
-  const { rows } = await pool.query(`SELECT items.name, quantity FROM items
-                                    INNER JOIN categories ON items.category_id=categories.id
-                                    WHERE categories.id=$1`, [category_ID]);
+  const { rows } = await pool.query(`SELECT * FROM items WHERE category_id=$1`, [category_ID]);
   return rows;
 }
 
@@ -30,11 +28,16 @@ async function addNewItem(category_ID, product) {
   await pool.query("INSERT INTO items (name, category_id, quantity) VALUES ($1, $2, $3)", [product.name, category_ID, product.quantity]);
 }
 
+async function updateCategory(category_ID, category_name) {
+  await pool.query("UPDATE categories SET name=$1 WHERE id=$2", [category_name, category_ID]);
+}
+
 module.exports = {
   getAllCategories,
   getAllItems,
   addNewCategory,
   addNewItem,
   getItemByID,
-  getCategoryByID
+  getCategoryByID,
+  updateCategory,
 }
