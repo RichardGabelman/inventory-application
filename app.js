@@ -14,8 +14,8 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/", indexRouter);
-app.use("/create", createRouter);
 app.use("/category", categoryRouter);
+app.use("/create", createRouter);
 app.use("/update", updateRouter);
 app.use((err, req, res, next) => {
   console.error(err);

@@ -9,9 +9,9 @@ const {
 const createRouter = Router();
 
 createRouter.get("/category", getCreateCategoryForm);
-createRouter.get("/item/:categoryName/:categoryID", getCreateItemForm);
+createRouter.get("/item/:categoryID", getCreateItemForm);
 
 createRouter.post("/category", postCreateCategoryForm);
-createRouter.post("/item/:categoryName/:categoryID", postCreateItemForm);
+createRouter.post("/item/:categoryID", postCreateItemForm);
 
 module.exports = createRouter;

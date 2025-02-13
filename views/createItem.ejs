@@ -4,11 +4,11 @@
   </head>
   <body>
     <header>
-      <h1>New Item in <%= categoryName %></h1>
+      <h1>New Item in <%= category.name %></h1>
     </header>
     <form
       method="POST"
-      action="/create/item/<%= categoryName %>/<%= categoryID %>"
+      action="/create/item/<%= category.id %>"
     >
       <label for="name">
         Item Name:

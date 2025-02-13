@@ -6,14 +6,13 @@ exports.getCreateCategoryForm = (req, res) => {
 };
 
 exports.getCreateItemForm = async (req, res) => {
-  const categoryName = req.params.categoryName;
   const categoryID = req.params.categoryID;
+  const category = await db.getCategoryByID(categoryID);
 
   res.render("createItem", {
-    categoryName: categoryName,
-    categoryID: categoryID,
+    category: category,
   });
-}
+};
 
 const validateCategory = [
   body("name")
@@ -36,8 +35,8 @@ exports.postCreateCategoryForm = [
       });
     }
 
-    const category_name = req.body.name;
-    await db.addNewCategory(category_name);
+    const categoryName = req.body.name;
+    await db.addNewCategory(categoryName);
     res.redirect("/");
   },
 ];
@@ -60,20 +59,22 @@ exports.postCreateItemForm = [
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+      const category = await db.getCategoryByID(req.params.categoryID);
       return res.status(400).render("createItem", {
         errors: errors.array(),
-        categoryName: req.params.categoryName,
-        categoryID: req.params.categoryID,
+        category: category,
       });
     }
 
     const categoryID = req.params.categoryID;
-    const categoryName = req.params.categoryName;
 
     const productName = req.body.name;
     const productQuantity = req.body.quantity;
 
-    await db.addNewItem(categoryID, { name: productName, quantity: productQuantity });
-    res.redirect(`/category/${categoryName}/${categoryID}`);
+    await db.addNewItem(categoryID, {
+      name: productName,
+      quantity: productQuantity,
+    });
+    res.redirect(`/category/${categoryID}`);
   },
 ];

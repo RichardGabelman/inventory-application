@@ -1,12 +1,12 @@
 <html>
   <head>
-    <title><%= categoryName %></title>
+    <title><%= category.name %></title>
   </head>
   <body>
     <h1>Inventory Application</h1>
     <div>
-      <h2>Category: <%- categoryName %></h2>
-      <a href="/update/category/<%= categoryID %>">Update category name</a>
+      <h2>Category: <%- category.name %></h2>
+      <a href="/update/category/<%= category.id %>">Update category name</a>
     </div>
     <ul>
       <% items.forEach((item) => { %>
@@ -15,7 +15,7 @@
       </li>
       <% }); %>
     </ul>
-    <a href="/create/item/<%= categoryName %>/<%= categoryID %>">Add item</a>
+    <a href="/create/item/<%= category.id %>">Add item</a>
     <a href="/">Go back</a>
   </body>
 </html>
