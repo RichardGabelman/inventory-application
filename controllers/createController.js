@@ -18,8 +18,6 @@ exports.getCreateItemForm = async (req, res) => {
 const validateCategory = [
   body("name")
     .trim()
-    .isAlpha()
-    .withMessage("Name must contain letters of the alphabet")
     .isLength({ max: 255 })
     .withMessage("Name cannot exceed 255 characters")
     .notEmpty()
@@ -36,8 +34,8 @@ exports.postCreateCategoryForm = [
       });
     }
 
-    const category_name = req.body.name;
-    await db.addNewCategory(category_name);
+    const categoryName = req.body.name;
+    await db.addNewCategory(categoryName);
     res.redirect("/");
   },
 ];

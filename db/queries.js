@@ -28,11 +28,16 @@ async function addNewItem(category_ID, product) {
   await pool.query("INSERT INTO items (name, category_id, quantity) VALUES ($1, $2, $3)", [product.name, category_ID, product.quantity]);
 }
 
+async function updateCategory(category_ID, category_name) {
+  await pool.query("UPDATE categories SET name=$1 WHERE id=$2", [category_name, category_ID]);
+}
+
 module.exports = {
   getAllCategories,
   getAllItems,
   addNewCategory,
   addNewItem,
   getItemByID,
-  getCategoryByID
+  getCategoryByID,
+  updateCategory,
 }
