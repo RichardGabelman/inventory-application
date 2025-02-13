@@ -32,6 +32,10 @@ async function updateCategory(category_ID, category_name) {
   await pool.query("UPDATE categories SET name=$1 WHERE id=$2", [category_name, category_ID]);
 }
 
+async function updateItem(item_id, item_name, item_quantity) {
+  await pool.query("UPDATE items SET name=$1, quantity=$2 WHERE id=$3", [item_name, item_quantity, item_id]);
+}
+
 module.exports = {
   getAllCategories,
   getAllItems,
@@ -40,4 +44,5 @@ module.exports = {
   getItemByID,
   getCategoryByID,
   updateCategory,
+  updateItem
 }
