@@ -11,6 +11,7 @@
     <ul>
       <% items.forEach((item) => { %>
       <li>
+        <p>Item ID: <%= item.id %></p>
         <%- include('item', { item: item }) %>
       </li>
       <% }); %>
