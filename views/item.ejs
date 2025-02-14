@@ -2,4 +2,7 @@
   <h2><%= item.name %></h2>
   <p>Quantity: <%= item.quantity %></p>
   <a href="/update/item/<%= item.id %>">Update item</a>
+  <form action="/delete/item/<%= item.id %>" method="POST">
+    <button name="submit">Delete item</button>
+  </form>
 </section>
