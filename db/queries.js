@@ -41,8 +41,8 @@ async function deleteItem(item_ID) {
 }
 
 async function deleteCategory(category_ID) {
-  await pool.query("DELETE FROM categories WHERE id=$1", [category_ID]);
   await pool.query("DELETE FROM items WHERE category_id=$1", [category_ID]);
+  await pool.query("DELETE FROM categories WHERE id=$1", [category_ID]);
 }
 
 module.exports = {

@@ -10,6 +10,9 @@
           <a href="/category/<%= category.id %>">
             <h2><%= category.name %></h2>
           </a>
+          <form action="/delete/category/<%= category.id %>" method="POST">
+            <button name="submit">Delete category</button>
+          </form>
         </li>
       <% }); %>
     </ul>
